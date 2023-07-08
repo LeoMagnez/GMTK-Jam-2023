@@ -37,7 +37,7 @@ public class Troops : MonoBehaviour
             
             bool temp = true;
 
-            while (temp && attackIndex < FightManager.instance.allies.Length)
+            while (temp && attackIndex < FightManager.instance.allies.Count)
             {
                 if(FightManager.instance.allies[attackIndex] != null)
                 {
@@ -58,10 +58,11 @@ public class Troops : MonoBehaviour
                 }
             }
 
-            if (attackIndex >= FightManager.instance.allies.Length)
+            if (attackIndex >= FightManager.instance.allies.Count)
             {
-                Debug.Log("No more enemies");
                 attackIndex++;
+                FightManager.instance.CheckForEndOfCombat();
+                
             }
 
 
@@ -102,8 +103,6 @@ public class Troops : MonoBehaviour
         {
             VisualDeadEffect();
         }
-
-        Debug.Log(gameObject.name + "'s health =" + health);
     }
 
     public void VisualAttackEffects()
