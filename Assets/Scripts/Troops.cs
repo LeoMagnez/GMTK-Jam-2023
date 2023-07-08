@@ -12,6 +12,9 @@ public class Troops : MonoBehaviour
 
     public int attackIndex = 0;
 
+    public ParticleSystem attackParticle;
+    public ParticleSystem deadParticle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,7 @@ public class Troops : MonoBehaviour
 
     public void Attack()
     {
+        
         Debug.Log(gameObject.name + " is attacking");
 
         if(gameObject.name == "Paladin")
@@ -39,7 +43,9 @@ public class Troops : MonoBehaviour
                 {
                     if (FightManager.instance.allies[attackIndex].GetComponent<Troops>().health > 0)
                     {
+                        VisualAttackEffects();
                         FightManager.instance.allies[attackIndex].GetComponent<Troops>().TakeDamage(attack);
+                        
                         temp = false;
                     }
                     else
@@ -69,8 +75,9 @@ public class Troops : MonoBehaviour
             //}
         }
 
-        else
+        else if (health > 0)
         {
+            VisualAttackEffects();
             FightManager.instance.paladin.GetComponent<Troops>().TakeDamage(attack);
         }
 
@@ -91,6 +98,21 @@ public class Troops : MonoBehaviour
 
         health -= tempDamage;
 
+        if(health <= 0)
+        {
+            VisualDeadEffect();
+        }
+
         Debug.Log(gameObject.name + "'s health =" + health);
+    }
+
+    public void VisualAttackEffects()
+    {
+        attackParticle.Play();
+    }
+
+    public void VisualDeadEffect()
+    {
+        deadParticle.Play();
     }
 }
