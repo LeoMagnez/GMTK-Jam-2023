@@ -9,6 +9,7 @@ public class Paladin : MonoBehaviour
     public float cooldown = 1f;
     public float baseCooldown = 1f;
     public float attack = 50f;
+    public float baseAttack = 50f;
     public float defense = 10f;
     public float baseDefense = 10f;
     public bool melee;
@@ -25,17 +26,22 @@ public class Paladin : MonoBehaviour
 
     public int breakArmor;
     public int slowEffect;
+    public int precisionDebuff;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
         isAlive = true;
         HPtext.SetText(health.ToString());
+
         breakArmor = 0;
         slowEffect = 0;
 
         defense = baseDefense;
         cooldown = baseCooldown;
+        attack = baseAttack;
     }
 
     // Update is called once per frame
@@ -55,8 +61,11 @@ public class Paladin : MonoBehaviour
             {
                 if (FightManager.instance.allies[attackIndex] != null)
                 {
+
+
                     if (FightManager.instance.allies[attackIndex].GetComponent<Troops>().health > 0)
                     {
+
                         VisualAttackEffects();
                         FightManager.instance.allies[attackIndex].GetComponent<Troops>().TakeDamage(attack);
 
@@ -99,6 +108,7 @@ public class Paladin : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         FightManager.instance.attacking = false;
+        attack = baseAttack;
     }
 
     public void VisualAttackEffects()
@@ -144,8 +154,11 @@ public class Paladin : MonoBehaviour
             {
                 if (!FightManager.instance.attacking)
                 {
+
+
                     timer -= Time.deltaTime;
                 }
+
 
                 yield return null;
             }
@@ -153,13 +166,19 @@ public class Paladin : MonoBehaviour
             if (health > 0 && attackIndex <= FightManager.instance.allies.Count)
             {
                 //Debug.Log(entity.GetComponent<Troops>().attackIndex);
+
+                if (precisionDebuff > 0)
+                {
+                    attack = baseAttack * Random.Range(0, 2);
+                }
+
                 FightManager.instance.attacking = true;
 
                 Attack();
-
+                
                 timer = cooldown;
             }
-
+            
             yield return null;
         }
     }
@@ -184,5 +203,15 @@ public class Paladin : MonoBehaviour
         {
             cooldown = baseCooldown;
         }
+
+        //if(precisionDebuff > 0)
+        //{
+        //    attack = baseAttack * Random.Range(0, 1);
+        //}
+        //else
+        //{
+        //    attack = baseAttack;
+        //}
     }
+
 }

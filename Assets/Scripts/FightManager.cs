@@ -134,6 +134,11 @@ public class FightManager : MonoBehaviour
         {
             paladin.GetComponent<Paladin>().slowEffect--;
         }
+        if (paladin.GetComponent<Paladin>().precisionDebuff > 0)
+        {
+            paladin.GetComponent<Paladin>().precisionDebuff--;
+        }
+
         //StopCoroutine(TroopLogic(troops[i]));
 
     }

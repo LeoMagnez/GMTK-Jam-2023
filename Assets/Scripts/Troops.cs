@@ -187,6 +187,14 @@ public class Troops : MonoBehaviour
                 }
                 break;
 
+            case troopType.ElementaireAlcohol:
+                MonoTarget();
+                if (InflictStatus())
+                {
+                    Gamemanager.instance.paladin.GetComponent<Paladin>().precisionDebuff = 2;
+                }
+                break;
+
 
         }
     }
