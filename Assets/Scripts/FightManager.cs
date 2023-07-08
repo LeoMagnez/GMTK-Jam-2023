@@ -13,8 +13,8 @@ public class FightManager : MonoBehaviour
     [SerializeField]
     private List<float> troopCooldown = new List<float>();
 
-    [SerializeField]
-    public List<Troops> troops = new List<Troops>();
+    //[SerializeField]
+    //public List<Troops> troops = new List<Troops>();
 
     [SerializeField]
     public bool attacking = false;
@@ -39,17 +39,22 @@ public class FightManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        paladin = Gamemanager.instance.paladin;
+    }
     // Start is called before the first frame update
     public void StartCombat()
     {
 
-        Debug.Log("Start Combat");
+        //Debug.Log("Start Combat");
         InitCooldown();
-        for(int i = 0; i < troops.Count; i++)
+        for(int i = 0; i < allies.Count; i++)
         {
-            Debug.Log("Created Coroutine for : " + troops[i].name);
-            StartCoroutine(TroopLogic(troops[i]));
+            //Debug.Log("Created Coroutine for : " + troops[i].name);
+            StartCoroutine(TroopLogic(allies[i].GetComponent<Troops>()));
         }
+        StartCoroutine(paladin.GetComponent<Paladin>().PaladinLogic());
     }
 
     // Update is called once per frame
@@ -61,12 +66,13 @@ public class FightManager : MonoBehaviour
     public void InitCooldown()
     {
         allies = RoomManager.instance.currentRoom.cards;
-        for (int i = 0; i < allies.Count; i++)
-        {
-            troops.Add(allies[i].GetComponent<Troops>());
-        }
+
+        //for (int i = 0; i < allies.Count; i++)
+        //{
+        //    troops.Add(allies[i].GetComponent<Troops>());
+        //}
         
-        troops.Add(paladin.GetComponent<Troops>());
+        //troops.Add(paladin.GetComponent<Troops>());
        
     }
 
@@ -104,7 +110,7 @@ public class FightManager : MonoBehaviour
     {
         hasCombatEnded = true;
         RoomManager.instance.currentRoom.ExitRoom();
-        Debug.Log("End of Combat");
+        //Debug.Log("End of Combat");
 
         //foreach(Troops troop in troops)
         //{
@@ -115,10 +121,10 @@ public class FightManager : MonoBehaviour
             
         //}
 
-        troops.Clear();
+
         allies.Clear();
         StopAllCoroutines();
-        paladin.GetComponent<Troops>().attackIndex = 0;
+        paladin.GetComponent<Paladin>().attackIndex = 0;
         attacking = false;
         //StopCoroutine(TroopLogic(troops[i]));
 
