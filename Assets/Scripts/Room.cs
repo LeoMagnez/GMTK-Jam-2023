@@ -39,6 +39,18 @@ public class Room : MonoBehaviour
         FightManager.instance.StartCombat();
     }
 
+    public void AddToRoom(CardData entity)
+    {
+        cards.Add(entity.generatedTroup);
+        mana -= entity.price;
+    }
+
+    public void RemoveFromRoom(CardData entity)
+    {
+        cards.Remove(entity.generatedTroup);
+        mana += entity.price;
+    }
+
     public void ExitRoom()
     {
         if(connectedRooms.Length > 1)

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1a84d9c26dc11a45936be2679f61088, type: 3}
+  m_Name: Debug Card 1
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  generatedTroup: {fileID: 8410461946405182745, guid: fd65afba5c4a709438f1ac21c338fa8f,
+    type: 3}
+  art: {fileID: 21300000, guid: 1661b4b0424015446b7f1c812d10a634, type: 3}
+  tier: 0
+  rarity: 0
+  price: 0
+  evolvedCard: {fileID: 0}
+  tokens:
+  - {fileID: 957105345, guid: 8f6c3b2b2a7f9d54c8efcfa305a35e58, type: 3}
+  - {fileID: 735244473, guid: 8f6c3b2b2a7f9d54c8efcfa305a35e58, type: 3}
+  - {fileID: 1113781386, guid: 8f6c3b2b2a7f9d54c8efcfa305a35e58, type: 3}
+  - {fileID: -1755278891, guid: 8f6c3b2b2a7f9d54c8efcfa305a35e58, type: 3}
+  - {fileID: 610164214, guid: 8f6c3b2b2a7f9d54c8efcfa305a35e58, type: 3}
