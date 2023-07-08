@@ -127,6 +127,7 @@ public class HandManager : MonoBehaviour
         cardsInHand.RemoveAt(selectedCard);
         cardsDisplay.Add(card);
         cardInSelection = false;
+        returnToDeck.SetActive(false);
     }
 
     public void DrawCard(CardData card)
