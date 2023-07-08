@@ -126,6 +126,14 @@ public class FightManager : MonoBehaviour
         StopAllCoroutines();
         paladin.GetComponent<Paladin>().attackIndex = 0;
         attacking = false;
+        if(paladin.GetComponent<Paladin>().breakArmor > 0)
+        {
+            paladin.GetComponent<Paladin>().breakArmor--;
+        }
+        if (paladin.GetComponent<Paladin>().slowEffect > 0)
+        {
+            paladin.GetComponent<Paladin>().slowEffect--;
+        }
         //StopCoroutine(TroopLogic(troops[i]));
 
     }

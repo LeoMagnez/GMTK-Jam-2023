@@ -33,6 +33,8 @@ public class Troops : MonoBehaviour
 
     public troopType type;
 
+    public int chanceToInflictStatus;
+
     public bool isAlive;
 
     public TextMeshPro HPtext;
@@ -168,6 +170,24 @@ public class Troops : MonoBehaviour
                 AttackEveryone();
                 break;
 
+            case troopType.ElementaireFeu:
+                MonoTarget();
+                if (InflictStatus())
+                {
+                    Gamemanager.instance.paladin.GetComponent<Paladin>().breakArmor = 2;
+                }
+
+                break;
+
+            case troopType.ElementaireSlime:
+                MonoTarget();
+                if (InflictStatus())
+                {
+                    Gamemanager.instance.paladin.GetComponent<Paladin>().slowEffect = 2;
+                }
+                break;
+
+
         }
     }
 
@@ -202,8 +222,8 @@ public class Troops : MonoBehaviour
         //Debug.Log(gameObject.name + " attaque tout le monde");
     }
 
-    public void InflictStatus()
+    public bool InflictStatus()
     {
-
+        return (Random.Range(0, 100) < chanceToInflictStatus);  
     }
 }
