@@ -7,8 +7,10 @@ public class Paladin : MonoBehaviour
 {
     public float health = 100f;
     public float cooldown = 1f;
+    public float baseCooldown = 1f;
     public float attack = 50f;
     public float defense = 10f;
+    public float baseDefense = 10f;
     public bool melee;
 
     public bool isAlive;
@@ -20,17 +22,26 @@ public class Paladin : MonoBehaviour
     public ParticleSystem attackParticle;
     public ParticleSystem deadParticle;
     public TextMeshPro HPtext;
+
+    public int breakArmor;
+    public int slowEffect;
+
     // Start is called before the first frame update
     void Start()
     {
         isAlive = true;
         HPtext.SetText(health.ToString());
+        breakArmor = 0;
+        slowEffect = 0;
+
+        defense = baseDefense;
+        cooldown = baseCooldown;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        ApplyStatus();
     }
 
     public void Attack()
@@ -150,6 +161,28 @@ public class Paladin : MonoBehaviour
             }
 
             yield return null;
+        }
+    }
+
+    public void ApplyStatus()
+    {
+        if (breakArmor > 0)
+        {
+            defense = baseDefense * 0.75f;
+        }
+        else
+        {
+            defense = baseDefense;
+        }
+
+        if (slowEffect > 0)
+        {
+            cooldown = baseCooldown * 1.25f;
+
+        }
+        else
+        {
+            cooldown = baseCooldown;
         }
     }
 }

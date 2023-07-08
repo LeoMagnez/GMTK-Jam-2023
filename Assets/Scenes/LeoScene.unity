@@ -10132,7 +10132,8 @@ MonoBehaviour:
   attackIndex: 0
   attackParticle: {fileID: 889809769}
   deadParticle: {fileID: 1737412391}
-  type: 0
+  type: 4
+  chanceToInflictStatus: 100
   isAlive: 0
   HPtext: {fileID: 1274684291}
 --- !u!136 &374358918
@@ -25031,6 +25032,7 @@ MonoBehaviour:
   attackParticle: {fileID: 392068384}
   deadParticle: {fileID: 230433467}
   type: 0
+  chanceToInflictStatus: 0
   isAlive: 0
   HPtext: {fileID: 1178857751}
 --- !u!136 &668532429
@@ -25409,6 +25411,7 @@ MonoBehaviour:
   attackParticle: {fileID: 563102313}
   deadParticle: {fileID: 1110018690}
   type: 8
+  chanceToInflictStatus: 0
   isAlive: 0
   HPtext: {fileID: 813632554}
 --- !u!1 &732279423
@@ -40234,6 +40237,7 @@ MonoBehaviour:
   attackParticle: {fileID: 311121750}
   deadParticle: {fileID: 837915805}
   type: 0
+  chanceToInflictStatus: 0
   isAlive: 0
   HPtext: {fileID: 1178857751}
 --- !u!136 &942076886
@@ -40413,6 +40417,7 @@ MonoBehaviour:
   attackParticle: {fileID: 652969222}
   deadParticle: {fileID: 1067369585}
   type: 0
+  chanceToInflictStatus: 0
   isAlive: 0
   HPtext: {fileID: 1178857751}
 --- !u!136 &1012766433
@@ -65231,6 +65236,7 @@ MonoBehaviour:
   attackParticle: {fileID: 1867606534}
   deadParticle: {fileID: 1846292565}
   type: 0
+  chanceToInflictStatus: 0
   isAlive: 0
   HPtext: {fileID: 1178857751}
 --- !u!136 &1486620192
@@ -70293,6 +70299,7 @@ MonoBehaviour:
   attackParticle: {fileID: 1872833942}
   deadParticle: {fileID: 1388910117}
   type: 0
+  chanceToInflictStatus: 0
   isAlive: 0
   HPtext: {fileID: 1178857751}
 --- !u!136 &1568597518
@@ -70492,8 +70499,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1000
   cooldown: 1
+  baseCooldown: 1
   attack: 50
   defense: 10
+  baseDefense: 10
   melee: 1
   isAlive: 0
   exp: 0
@@ -70501,6 +70510,8 @@ MonoBehaviour:
   attackParticle: {fileID: 1460051471}
   deadParticle: {fileID: 1948652001}
   HPtext: {fileID: 1178857751}
+  breakArmor: 0
+  slowEffect: 0
 --- !u!1 &1721309766
 GameObject:
   m_ObjectHideFlags: 0
@@ -90239,6 +90250,7 @@ MonoBehaviour:
   attackParticle: {fileID: 1488510608}
   deadParticle: {fileID: 1471797949}
   type: 0
+  chanceToInflictStatus: 0
   isAlive: 0
   HPtext: {fileID: 1178857751}
 --- !u!136 &1873644963
@@ -105207,6 +105219,7 @@ MonoBehaviour:
   attackParticle: {fileID: 2060841402}
   deadParticle: {fileID: 1966835612}
   type: 3
+  chanceToInflictStatus: 0
   isAlive: 0
   HPtext: {fileID: 105175050}
 --- !u!1 &2072395946
@@ -105331,7 +105344,8 @@ MonoBehaviour:
   attackIndex: 0
   attackParticle: {fileID: 732279424}
   deadParticle: {fileID: 2124995627}
-  type: 0
+  type: 6
+  chanceToInflictStatus: 100
   isAlive: 0
   HPtext: {fileID: 1726474581}
 --- !u!1 &2124995626
