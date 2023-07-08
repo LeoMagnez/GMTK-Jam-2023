@@ -10226,6 +10226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  baseHealth: 100
   cooldown: 1.5
   attack: 10
   defense: 10
@@ -10234,7 +10235,7 @@ MonoBehaviour:
   attackParticle: {fileID: 889809769}
   deadParticle: {fileID: 1737412391}
   type: 4
-  chanceToInflictStatus: 100
+  chanceToInflictStatus: 0
   isAlive: 0
   HPtext: {fileID: 1274684291}
 --- !u!136 &374358918
@@ -15252,7 +15253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &484048746
 AudioListener:
   m_ObjectHideFlags: 0
@@ -25125,6 +25126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  baseHealth: 100
   cooldown: 1.2
   attack: 10
   defense: 10
@@ -25504,6 +25506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  baseHealth: 100
   cooldown: 1.3
   attack: 10
   defense: 10
@@ -25511,7 +25514,7 @@ MonoBehaviour:
   attackIndex: 0
   attackParticle: {fileID: 563102313}
   deadParticle: {fileID: 1110018690}
-  type: 8
+  type: 5
   chanceToInflictStatus: 0
   isAlive: 0
   HPtext: {fileID: 813632554}
@@ -40330,6 +40333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  baseHealth: 100
   cooldown: 2.8
   attack: 10
   defense: 10
@@ -40510,6 +40514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  baseHealth: 100
   cooldown: 1.2
   attack: 10
   defense: 10
@@ -65435,6 +65440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  baseHealth: 100
   cooldown: 2.8
   attack: 10
   defense: 10
@@ -70498,6 +70504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  baseHealth: 100
   cooldown: 2
   attack: 10
   defense: 10
@@ -70708,10 +70715,11 @@ MonoBehaviour:
   cooldown: 1
   baseCooldown: 1
   attack: 50
+  baseAttack: 50
   defense: 10
   baseDefense: 10
   melee: 1
-  isAlive: 0
+  isAlive: 1
   exp: 0
   attackIndex: 0
   attackParticle: {fileID: 1460051471}
@@ -70719,6 +70727,7 @@ MonoBehaviour:
   HPtext: {fileID: 1178857751}
   breakArmor: 0
   slowEffect: 0
+  precisionDebuff: 0
 --- !u!1 &1721309766
 GameObject:
   m_ObjectHideFlags: 0
@@ -90449,6 +90458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  baseHealth: 100
   cooldown: 2
   attack: 10
   defense: 10
@@ -105418,6 +105428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  baseHealth: 100
   cooldown: 3
   attack: 10
   defense: 10
@@ -105425,7 +105436,7 @@ MonoBehaviour:
   attackIndex: 0
   attackParticle: {fileID: 2060841402}
   deadParticle: {fileID: 1966835612}
-  type: 3
+  type: 6
   chanceToInflictStatus: 0
   isAlive: 0
   HPtext: {fileID: 105175050}
@@ -105544,6 +105555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  baseHealth: 100
   cooldown: 2.5
   attack: 10
   defense: 10
@@ -105551,8 +105563,8 @@ MonoBehaviour:
   attackIndex: 0
   attackParticle: {fileID: 732279424}
   deadParticle: {fileID: 2124995627}
-  type: 6
-  chanceToInflictStatus: 100
+  type: 7
+  chanceToInflictStatus: 0
   isAlive: 0
   HPtext: {fileID: 1726474581}
 --- !u!1 &2124995626

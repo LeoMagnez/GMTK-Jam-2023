@@ -67,6 +67,7 @@ public class Paladin : MonoBehaviour
                     {
 
                         VisualAttackEffects();
+
                         FightManager.instance.allies[attackIndex].GetComponent<Troops>().TakeDamage(attack);
 
                         temp = false;
@@ -169,7 +170,11 @@ public class Paladin : MonoBehaviour
 
                 if (precisionDebuff > 0)
                 {
-                    attack = baseAttack * Random.Range(0, 2);
+                    if(Random.Range(0, 100) > 75)
+                    {
+                        attack = 0;
+                    }
+                    
                 }
 
                 FightManager.instance.attacking = true;

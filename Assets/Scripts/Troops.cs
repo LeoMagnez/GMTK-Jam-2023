@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 public class Troops : MonoBehaviour
 {
     public float health = 100f;
+    public float baseHealth = 100f;
     public float cooldown = 1f;
     public float attack = 50f;
     public float defense = 10f;
@@ -44,6 +45,7 @@ public class Troops : MonoBehaviour
     {
         HPtext.SetText(health.ToString());
         isAlive = true;
+        health = baseHealth;
     }
 
     // Update is called once per frame
@@ -176,7 +178,6 @@ public class Troops : MonoBehaviour
                 {
                     Gamemanager.instance.paladin.GetComponent<Paladin>().breakArmor = 2;
                 }
-
                 break;
 
             case troopType.ElementaireSlime:
@@ -194,6 +195,13 @@ public class Troops : MonoBehaviour
                     Gamemanager.instance.paladin.GetComponent<Paladin>().precisionDebuff = 2;
                 }
                 break;
+            case troopType.ElementaireEau:
+                for (int i = 0; i < FightManager.instance.allies.Count; i++)
+                {
+                    FightManager.instance.allies[i].GetComponent<Troops>().Heal(0.15f);
+                }
+                break;
+
 
 
         }
@@ -233,5 +241,15 @@ public class Troops : MonoBehaviour
     public bool InflictStatus()
     {
         return (Random.Range(0, 100) < chanceToInflictStatus);  
+    }
+
+    public void Heal(float ratio)
+    {
+        health += health * ratio;
+        if(health > baseHealth)
+        {
+            health = baseHealth;
+        }
+        HPtext.SetText(health.ToString());
     }
 }
