@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Troops : MonoBehaviour
 {
@@ -15,71 +17,95 @@ public class Troops : MonoBehaviour
     public ParticleSystem attackParticle;
     public ParticleSystem deadParticle;
 
+    public enum troopType
+    {
+        Gobelin,
+        Archer,
+        Troll,
+        Mortier,
+        ElementaireFeu,
+        ElementaireEau,
+        ElementaireSlime,
+        ElementaireAlcohol,
+        FireMage,
+        Paladin,
+    }
+
+    public troopType type;
+
+    public bool isAlive;
+
+    public TextMeshPro HPtext;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        HPtext.SetText(health.ToString());
+        isAlive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Attack()
     {
         
-        Debug.Log(gameObject.name + " is attacking");
+        //Debug.Log(gameObject.name + " is attacking");
 
-        if(gameObject.name == "Paladin")
-        {
+        //if(gameObject.name == "Paladin")
+        //{
             
-            bool temp = true;
+        //    bool temp = true;
 
-            while (temp && attackIndex < FightManager.instance.allies.Count)
-            {
-                if(FightManager.instance.allies[attackIndex] != null)
-                {
-                    if (FightManager.instance.allies[attackIndex].GetComponent<Troops>().health > 0)
-                    {
-                        VisualAttackEffects();
-                        FightManager.instance.allies[attackIndex].GetComponent<Troops>().TakeDamage(attack);
+        //    while (temp && attackIndex < FightManager.instance.allies.Count)
+        //    {
+        //        if(FightManager.instance.allies[attackIndex] != null)
+        //        {
+        //            if (FightManager.instance.allies[attackIndex].GetComponent<Troops>().health > 0)
+        //            {
+        //                VisualAttackEffects();
+        //                FightManager.instance.allies[attackIndex].GetComponent<Troops>().TakeDamage(attack);
                         
-                        temp = false;
-                    }
-                    else
-                    {
+        //                temp = false;
+        //            }
+        //            else
+        //            {
                         
-                        Debug.Log(FightManager.instance.allies[attackIndex].gameObject.name + " is dead");
-                        attackIndex++;
-                    }
+        //                Debug.Log(FightManager.instance.allies[attackIndex].gameObject.name + " is dead");
+        //                attackIndex++;
+        //            }
                     
-                }
-            }
+        //        }
+        //    }
 
-            if (attackIndex >= FightManager.instance.allies.Count)
-            {
-                attackIndex++;
-                FightManager.instance.CheckForEndOfCombat();
+        //    if (attackIndex >= FightManager.instance.allies.Count)
+        //    {
+        //        attackIndex++;
+        //        FightManager.instance.CheckForEndOfCombat();
                 
-            }
+        //    }
 
 
 
 
-            //if (FightManager.instance.allies[0] != null)
-            //{
-            //    Debug.Log(FightManager.instance.allies[0].gameObject.name + " is under attack");
+        //    //if (FightManager.instance.allies[0] != null)
+        //    //{
+        //    //    Debug.Log(FightManager.instance.allies[0].gameObject.name + " is under attack");
 
-            //    FightManager.instance.allies[0].GetComponent<Troops>().TakeDamage(attack);
-            //}
-        }
+        //    //    FightManager.instance.allies[0].GetComponent<Troops>().TakeDamage(attack);
+        //    //}
+        //}
 
-        else if (health > 0)
+        if (health > 0)
         {
             VisualAttackEffects();
-            FightManager.instance.paladin.GetComponent<Troops>().TakeDamage(attack);
+            
+
+            SelectAttack();
+
         }
 
         StartCoroutine(AttackCR());
@@ -95,14 +121,25 @@ public class Troops : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        float tempDamage = damage * (1 - (defense / 100f));
-
-        health -= tempDamage;
-
-        if(health <= 0)
+        if (isAlive)
         {
-            VisualDeadEffect();
+            float tempDamage = damage * (1 - (defense / 100f));
+
+            if (health > 0)
+            {
+                health -= tempDamage;
+            }
+
+            if (health <= 0)
+            {
+                VisualDeadEffect();
+                health = 0;
+                isAlive = false;
+            }
+
+            HPtext.SetText(health.ToString());
         }
+
     }
 
     public void VisualAttackEffects()
@@ -113,5 +150,60 @@ public class Troops : MonoBehaviour
     public void VisualDeadEffect()
     {
         deadParticle.Play();
+    }
+
+    public void SelectAttack()
+    {
+        switch(type)
+        {
+            case troopType.Mortier:
+                AttackAllMelee();
+                break;
+
+            case troopType.Gobelin:
+                MonoTarget();
+                break;
+
+            case troopType.FireMage:
+                AttackEveryone();
+                break;
+
+        }
+    }
+
+    public void MonoTarget()
+    {
+        Gamemanager.instance.paladin.GetComponent<Paladin>().TakeDamage(attack);
+        //Debug.Log(gameObject.name + " attaque en cible unique");
+    }
+
+    public void AttackAllMelee()
+    {
+        for (int i = 0; i < FightManager.instance.allies.Count; i++)
+        {
+            if (FightManager.instance.allies[i].GetComponent<Troops>().melee)
+            {
+                FightManager.instance.allies[i].GetComponent<Troops>().TakeDamage(attack);
+            }
+        }
+
+        Gamemanager.instance.paladin.GetComponent<Paladin>().TakeDamage(attack);
+        //Debug.Log(gameObject.name + " attaque tous les melee");
+    }
+
+    public void AttackEveryone()
+    {
+        for (int i = 0; i < FightManager.instance.allies.Count; i++)
+        {
+            FightManager.instance.allies[i].GetComponent<Troops>().TakeDamage(attack);
+        }
+
+        Gamemanager.instance.paladin.GetComponent<Paladin>().TakeDamage(attack);
+        //Debug.Log(gameObject.name + " attaque tout le monde");
+    }
+
+    public void InflictStatus()
+    {
+
     }
 }
