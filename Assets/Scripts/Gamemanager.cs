@@ -53,6 +53,7 @@ public class Gamemanager : MonoBehaviour
 
                 RoomManager.instance.currentRoom.EnterRoom();
                 MapManager.instance.currentTemplate.SetActive(false);
+                MapManager.instance.readybutton.SetActive(false);
                 MapManager.instance.gameObject.SetActive(false);
 
 

@@ -151,7 +151,7 @@ public class Room : MonoBehaviour
 
 
             //this.gameObject.SetActive(false);
-            environnement.SetActive(false);
+            
 
 
             
@@ -162,9 +162,18 @@ public class Room : MonoBehaviour
             RoomManager.instance.ChangeCurrentRoom(connectedRooms[0]);
             connectedRooms[0].gameObject.SetActive(true);
             //this.gameObject.SetActive(false);
-            environnement.SetActive(false);
 
             
+        }
+        environnement.SetActive(false);
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i].transform.childCount != 0)
+            {
+                Destroy(slots[i].transform.GetChild(0).gameObject);
+            }
+
+
         }
     }
     public void CreateTroups(List<GameObject> list)

@@ -11,7 +11,7 @@ public class MapManager : MonoBehaviour
     [SerializeField] bool validSave = true;
     [SerializeField] GameObject[] templates;
     [SerializeField] GameObject showRoom;
-    [SerializeField] GameObject readybutton;
+    [SerializeField] public GameObject readybutton;
     [SerializeField] public Room currentRoomInEdit;
 
     [SerializeField] public GameObject currentTemplate;
