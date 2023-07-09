@@ -67,17 +67,18 @@ public class FightManager : MonoBehaviour
 
     public void InitCooldown()
     {
+        //RoomManager.instance.currentRoom.CreateTroups();
 
-        RoomManager.instance.currentRoom.CreateTroups();
         //allies = RoomManager.instance.currentRoom.instantiated;
+
 
         //for (int i = 0; i < allies.Count; i++)
         //{
         //    troops.Add(allies[i].GetComponent<Troops>());
         //}
-        
+
         //troops.Add(paladin.GetComponent<Troops>());
-       
+
     }
 
     public IEnumerator TroopLogic(Troops entity)
