@@ -36,6 +36,7 @@ public class Troops : MonoBehaviour
     public troopType type;
 
     public int chanceToInflictStatus;
+    public float healingAmount;
 
     public bool isAlive;
 
@@ -213,7 +214,7 @@ public class Troops : MonoBehaviour
             case troopType.ElementaireEau:
                 for (int i = 0; i < FightManager.instance.allies.Count; i++)
                 {
-                    FightManager.instance.allies[i].GetComponent<Troops>().Heal(0.15f);
+                    FightManager.instance.allies[i].GetComponent<Troops>().Heal(healingAmount);
                 }
                 break;
 
