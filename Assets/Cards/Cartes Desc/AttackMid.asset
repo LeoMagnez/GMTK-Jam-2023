@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AttackMid
   m_EditorClassIdentifier: 
   cardImage: {fileID: 0}
-  description: Mid Attack
+  description: RegularAttack

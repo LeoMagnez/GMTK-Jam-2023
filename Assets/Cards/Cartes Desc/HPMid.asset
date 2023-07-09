@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HPMid
   m_EditorClassIdentifier: 
   cardImage: {fileID: 0}
-  description: Mid HP
+  description: Regular HP

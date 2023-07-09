@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SplashDamage
   m_EditorClassIdentifier: 
   cardImage: {fileID: 0}
-  description: 
+  description: Hits all melee

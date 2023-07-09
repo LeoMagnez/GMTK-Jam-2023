@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AttackHigh
   m_EditorClassIdentifier: 
   cardImage: {fileID: 0}
-  description: High Attack
+  description: Strong

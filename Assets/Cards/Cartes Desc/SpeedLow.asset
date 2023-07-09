@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SpeedLow
   m_EditorClassIdentifier: 
   cardImage: {fileID: 0}
-  description: 
+  description: Heavy

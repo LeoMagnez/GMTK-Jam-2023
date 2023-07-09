@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HPHigh
   m_EditorClassIdentifier: 
   cardImage: {fileID: 0}
-  description: High HP
+  description: Tank

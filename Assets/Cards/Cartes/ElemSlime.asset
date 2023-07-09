@@ -19,4 +19,9 @@ MonoBehaviour:
   rarity: 0
   price: 1
   evolvedCard: {fileID: 0}
-  tokens: []
+  tokens:
+  - {fileID: 11400000, guid: 0c2b0b697a964d14b848d4d259bae4f6, type: 2}
+  - {fileID: 11400000, guid: b070b6226dc6acc4d9e76e309cb1380f, type: 2}
+  - {fileID: 11400000, guid: 97fb1614e24d5a441b2ca04321fbf31c, type: 2}
+  - {fileID: 11400000, guid: 4e106cfcd96e2f24db8aa6a5a9c18857, type: 2}
+  - {fileID: 11400000, guid: fe0a82c8327b8a54a9e461d8e384a837, type: 2}

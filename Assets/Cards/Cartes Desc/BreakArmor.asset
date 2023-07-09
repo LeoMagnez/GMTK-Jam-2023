@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BreakArmor
   m_EditorClassIdentifier: 
   cardImage: {fileID: 0}
-  description: 
+  description: Reduces Defense
