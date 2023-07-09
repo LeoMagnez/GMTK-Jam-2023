@@ -140,7 +140,7 @@ public class HandManager : MonoBehaviour
         returnToDeck.SetActive(false);
         poseCard.SetActive(false);
         Quaternion randRot = Quaternion.Euler(0,Random.Range(0,360),0);
-        Vector3 randOffset = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
+        Vector3 randOffset = new Vector3(Random.Range(-1.2f,1.2f), 0, Random.Range(-0.5f, 0.5f));
         while (inAnim)
         {
             if (Vector3.Distance(card.transform.position, anchors[3].position + randOffset) < 0.01f && Quaternion.Angle(card.transform.rotation, randRot)<3f)
@@ -183,7 +183,10 @@ public class HandManager : MonoBehaviour
             cardsDisplay[i].GetComponent<CardDisplay>().UpdateData(cardsInHand[i]);
         }
     }
-
+    public int GetNumberOfCard()
+    {
+        return cardsInHand.Count;
+    }
     IEnumerator FocusOnCard(GameObject card)
     {
         returnToMap.SetActive(false);
