@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generatedTroup: {fileID: 1730321017452690237, guid: 6ddce1fada1da7a4d98acd88bc4cb3df,
     type: 3}
-  art: {fileID: 0}
+  art: {fileID: 358364829, guid: 47b4353638e99a540bbb398bfe7108ec, type: 3}
   tier: 0
   rarity: 0
   price: 1

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb4e31d6c849a44b96413d0cbad8f10, type: 3}
   m_Name: Slime
   m_EditorClassIdentifier: 
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 1545157043, guid: 8f6c3b2b2a7f9d54c8efcfa305a35e58, type: 3}
   description: Reduces Speed

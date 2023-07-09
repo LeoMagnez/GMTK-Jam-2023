@@ -108,12 +108,12 @@ TextureImporter:
       name: pictos_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 231
-        width: 13
-        height: 18
+        x: 68
+        y: 621
+        width: 77
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,12 +129,12 @@ TextureImporter:
       name: pictos_1
       rect:
         serializedVersion: 2
-        x: 36
-        y: 231
-        width: 21
-        height: 18
+        x: 179
+        y: 619
+        width: 77
+        height: 77
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -150,12 +150,12 @@ TextureImporter:
       name: pictos_2
       rect:
         serializedVersion: 2
-        x: 66
-        y: 231
-        width: 29
-        height: 18
+        x: 270
+        y: 620
+        width: 108
+        height: 76
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,12 +171,12 @@ TextureImporter:
       name: pictos_3
       rect:
         serializedVersion: 2
-        x: 71
-        y: 200
-        width: 14
-        height: 19
+        x: 82
+        y: 503
+        width: 44
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -192,12 +192,12 @@ TextureImporter:
       name: pictos_4
       rect:
         serializedVersion: 2
-        x: 6
-        y: 170
-        width: 17
-        height: 26
+        x: 160
+        y: 499
+        width: 72
+        height: 85
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -213,12 +213,12 @@ TextureImporter:
       name: pictos_5
       rect:
         serializedVersion: 2
-        x: 35
-        y: 173
-        width: 24
-        height: 19
+        x: 281
+        y: 498
+        width: 94
+        height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -231,36 +231,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pictos_6
-      rect:
-        serializedVersion: 2
-        x: 70
-        y: 176
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a1210f5ae6e11c4ca74dad49c4962ba
-      internalID: -233663474
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: pictos_7
       rect:
         serializedVersion: 2
-        x: 9
-        y: 130
-        width: 12
-        height: 13
+        x: 70
+        y: 400
+        width: 66
+        height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -276,12 +255,12 @@ TextureImporter:
       name: pictos_8
       rect:
         serializedVersion: 2
-        x: 34
-        y: 129
-        width: 23
-        height: 27
+        x: 180
+        y: 400
+        width: 67
+        height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -297,12 +276,12 @@ TextureImporter:
       name: pictos_9
       rect:
         serializedVersion: 2
-        x: 64
-        y: 129
-        width: 26
-        height: 33
+        x: 302
+        y: 397
+        width: 67
+        height: 73
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -318,12 +297,12 @@ TextureImporter:
       name: pictos_10
       rect:
         serializedVersion: 2
-        x: 6
-        y: 99
-        width: 21
-        height: 25
+        x: 82
+        y: 300
+        width: 48
+        height: 68
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -339,12 +318,12 @@ TextureImporter:
       name: pictos_11
       rect:
         serializedVersion: 2
-        x: 35
-        y: 97
-        width: 21
-        height: 23
+        x: 176
+        y: 300
+        width: 71
+        height: 73
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -360,12 +339,12 @@ TextureImporter:
       name: pictos_12
       rect:
         serializedVersion: 2
-        x: 4
-        y: 67
-        width: 19
-        height: 19
+        x: 302
+        y: 314
+        width: 56
+        height: 49
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -381,12 +360,12 @@ TextureImporter:
       name: pictos_13
       rect:
         serializedVersion: 2
-        x: 36
-        y: 67
-        width: 22
-        height: 22
+        x: 74
+        y: 208
+        width: 64
+        height: 77
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -399,36 +378,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pictos_14
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 65
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9db5434189db9d84798783f7c14784dd
-      internalID: 1113781386
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: pictos_15
       rect:
         serializedVersion: 2
-        x: 6
-        y: 34
-        width: 14
-        height: 21
+        x: 174
+        y: 194
+        width: 73
+        height: 94
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -441,36 +399,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pictos_16
-      rect:
-        serializedVersion: 2
-        x: 35
-        y: 32
-        width: 26
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 53498cae05ade7044a9ffca74a29032a
-      internalID: 1210946577
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: pictos_17
       rect:
         serializedVersion: 2
-        x: 67
-        y: 34
-        width: 27
-        height: 29
+        x: 271
+        y: 201
+        width: 83
+        height: 89
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -483,36 +420,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pictos_18
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 3
-        width: 22
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 30d408f09aa1ac545a8600ef2d725f42
-      internalID: -618241371
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: pictos_19
       rect:
         serializedVersion: 2
-        x: 35
-        y: 6
-        width: 23
-        height: 20
+        x: 91
+        y: 95
+        width: 69
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -528,12 +444,12 @@ TextureImporter:
       name: pictos_20
       rect:
         serializedVersion: 2
-        x: 69
-        y: 7
-        width: 20
-        height: 19
+        x: 229
+        y: 117
+        width: 137
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -541,6 +457,69 @@ TextureImporter:
       bones: []
       spriteID: 6f41ec2203b6b0648aeed1a0dac62b5c
       internalID: -1987126933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pictos_21
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 61
+        width: 138
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93daf5bf2538469458cf70a9aae4a7ca
+      internalID: 1315657948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pictos_22
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 19
+        width: 39
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4991f539b9e91b04cb8bba3dc8a5d036
+      internalID: -1899900433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pictos_23
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 13
+        width: 139
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3f6b00512695b24f9b73f8d71d084c9
+      internalID: 714911817
       vertices: []
       indices: 
       edges: []
@@ -556,6 +535,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      pictos_23: 714911817
       pictos_8: -367968052
       pictos_12: 1545157043
       pictos_3: -1838438930
@@ -564,7 +544,9 @@ TextureImporter:
       pictos_16: 1210946577
       pictos_1: 205558717
       pictos_15: 1115238326
+      pictos_22: -1899900433
       pictos_9: 735244473
+      pictos_21: 1315657948
       pictos_20: -1987126933
       pictos_13: 826238510
       pictos_14: 1113781386
