@@ -63,12 +63,14 @@ public class Room : MonoBehaviour
     {
         cards.Add(entity.generatedTroup);
         mana -= entity.price;
+        ManaDisplay.instance.UpdateDisplay(6- mana);
     }
 
     public void RemoveFromRoom(CardData entity)
     {
         cards.Remove(entity.generatedTroup);
         mana += entity.price;
+        ManaDisplay.instance.UpdateDisplay(6-mana);
     }
 
     public void ExitRoom()
