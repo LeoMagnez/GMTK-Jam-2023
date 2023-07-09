@@ -36,6 +36,7 @@ public class RoomManager : MonoBehaviour
     public void ChangeCurrentRoom(Room newRoom, bool start = false)
     {
         Debug.Log(newRoom);
+        newRoom.gameObject.SetActive(true);
         currentRoom = newRoom;
         if (!start)
         {

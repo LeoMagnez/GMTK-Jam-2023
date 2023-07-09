@@ -16,6 +16,8 @@ public class Gamemanager : MonoBehaviour
     [SerializeField] Phase currentPhase = Phase.Fight;
     bool inEditRoom;
 
+    public bool Paladead;
+
     public void NextStep() 
     {
         int n = (int)currentPhase;

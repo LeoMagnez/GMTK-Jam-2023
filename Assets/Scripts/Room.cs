@@ -29,6 +29,8 @@ public class Room : MonoBehaviour
     public List<GameObject> ranges = new List<GameObject>();
 
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,8 @@ public class Room : MonoBehaviour
             EnterRoom();
 
         }
+
+        
     }
 
     public void EnterRoom()
@@ -54,6 +58,7 @@ public class Room : MonoBehaviour
 
         dust.Play();
         environnement.SetActive(true);
+
 
         StartCoroutine(WaitBeforeFight());
 
@@ -75,7 +80,19 @@ public class Room : MonoBehaviour
 
     public void ExitRoom()
     {
-        if (connectedRooms[0] == null)
+        if (Gamemanager.instance.Paladead)
+        {
+            Gamemanager.instance.Paladead = false;
+
+            
+
+            Debug.Log("change la salle");
+            RoomManager.instance.ChangeCurrentRoom(MapManager.instance.startRoom);
+            MapManager.instance.startRoom.gameObject.SetActive(true);
+            this.gameObject.SetActive(false);
+            environnement.SetActive(false);
+        }
+        else if (connectedRooms[0] == null)
         {
             nettoyage();
         }
@@ -133,7 +150,7 @@ public class Room : MonoBehaviour
 
 
 
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
             environnement.SetActive(false);
 
 
@@ -144,7 +161,7 @@ public class Room : MonoBehaviour
             Debug.Log("change la salle");
             RoomManager.instance.ChangeCurrentRoom(connectedRooms[0]);
             connectedRooms[0].gameObject.SetActive(true);
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
             environnement.SetActive(false);
 
             
@@ -154,9 +171,17 @@ public class Room : MonoBehaviour
     {
         for (int i = 0; i < list.Count; i++)
         {
-            GameObject temp = Instantiate(list[i], slots[i].transform);
+            if (slots[i].transform.childCount == 0)
+            {
+                GameObject temp = Instantiate(list[i], slots[i].transform);
+
+                instantiated.Add(temp);
+            }
+            else
+            {
+                Destroy(slots[i].transform.GetChild(0).gameObject);
+            }
             
-            instantiated.Add(temp);
         }
     }
 
@@ -211,7 +236,7 @@ public class Room : MonoBehaviour
 
         FightManager.instance.allies = null;
 
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
         environnement.SetActive(false);
 
         Gamemanager.instance.NextStep();

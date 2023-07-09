@@ -33,7 +33,7 @@ public class Paladin : MonoBehaviour
     public float slowEffectRatio;
     public int precisionDebuff;
 
-    
+    public bool backtoRoom;
 
     // Start is called before the first frame update
     void Start()
@@ -51,12 +51,24 @@ public class Paladin : MonoBehaviour
 
         breakArmorRatio = 1f;
         slowEffectRatio = 1f;
+
+        backtoRoom = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         ApplyStatus();
+
+        if(backtoRoom)
+        {
+            mort();
+        }
+
+        if(health <= 0)
+        {
+            mort();
+        }
     }
 
     public void Attack()
@@ -228,4 +240,20 @@ public class Paladin : MonoBehaviour
         //}
     }
 
+    public void mort()
+    {
+        backtoRoom = false;
+        health = maxHealth;
+
+        //if (FightManager.instance.allies != null)
+        //{
+        //    FightManager.instance.allies.Clear();
+        //}
+
+
+        Gamemanager.instance.Paladead = true;
+        
+        FightManager.instance.CheckForEndOfCombat();
+        //RoomManager.instance.ChangeCurrentRoom(MapManager.instance.startRoom);
+    }
 }

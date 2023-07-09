@@ -14,6 +14,8 @@ public class MapManager : MonoBehaviour
     [SerializeField] public Room currentRoomInEdit;
 
     [SerializeField] public GameObject currentTemplate;
+
+    public Room startRoom;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -34,6 +36,8 @@ public class MapManager : MonoBehaviour
         GameObject temp = Instantiate(templates[Random.Range(0, templates.Length)],new Vector3(0, 0f, -3f),Quaternion.identity);
         RoomManager.instance.ChangeCurrentRoom(temp.GetComponent<Template>().StartRoom,true);
         currentTemplate = temp.transform.GetChild(0).gameObject;
+
+        startRoom = temp.GetComponent<Template>().StartRoom;
 
         //animation de spawn de l'étage
         //showRoom.SetActive(false);
