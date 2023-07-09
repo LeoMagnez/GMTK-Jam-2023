@@ -38,5 +38,7 @@ public class RoomManager : MonoBehaviour
         Debug.Log(newRoom);
         currentRoom = newRoom;
         
+        currentRoom.EnterRoom();
+
     }
 }

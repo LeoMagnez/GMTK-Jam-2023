@@ -6,6 +6,7 @@ using UnityEngine;
 public class Paladin : MonoBehaviour
 {
     public float health = 100f;
+    public float maxHealth;
     public float cooldown = 1f;
     public float baseCooldown = 1f;
     public float attack = 50f;
@@ -43,6 +44,7 @@ public class Paladin : MonoBehaviour
         breakArmor = 0;
         slowEffect = 0;
 
+        health = maxHealth;
         defense = baseDefense;
         cooldown = baseCooldown;
         attack = baseAttack;
