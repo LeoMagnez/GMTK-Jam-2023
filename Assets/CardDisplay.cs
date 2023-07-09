@@ -43,7 +43,7 @@ public class CardDisplay : MonoBehaviour
         }
         tier.sprite = tierSprites[currentData.tier];
         rarity.sprite = raritySprites[currentData.rarity];
-        price.sprite = priceSprites[currentData.price];
+        price.sprite = priceSprites[currentData.price-1];
         
     }
     private void Update()

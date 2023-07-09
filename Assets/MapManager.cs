@@ -32,7 +32,7 @@ public class MapManager : MonoBehaviour
     {
         Debug.Log(templates.Length);
         GameObject temp = Instantiate(templates[Random.Range(0, templates.Length)],new Vector3(0, 0f, -3f),Quaternion.identity);
-        RoomManager.instance.ChangeCurrentRoom(temp.GetComponent<Template>().StartRoom);
+        RoomManager.instance.ChangeCurrentRoom(temp.GetComponent<Template>().StartRoom,true);
         currentTemplate = temp.transform.GetChild(0).gameObject;
 
         //animation de spawn de l'étage
@@ -109,7 +109,7 @@ public class MapManager : MonoBehaviour
         if (inMap)
         {
             currentTemplate.transform.localPosition = Vector3.Lerp(currentTemplate.transform.localPosition, new Vector3(0, 0, 0),Time.deltaTime*10);
-            showRoom.transform.localPosition = Vector3.Lerp(showRoom.transform.localPosition, new Vector3(0, 10, 0), Time.deltaTime*10);
+            showRoom.transform.localPosition = Vector3.Lerp(showRoom.transform.localPosition, new Vector3(0, 8, 0), Time.deltaTime*5);
 
         }
         else

@@ -33,12 +33,15 @@ public class RoomManager : MonoBehaviour
         
     }
 
-    public void ChangeCurrentRoom(Room newRoom)
+    public void ChangeCurrentRoom(Room newRoom, bool start = false)
     {
         Debug.Log(newRoom);
         currentRoom = newRoom;
-        
-        currentRoom.EnterRoom();
+        if (!start)
+        {
+            currentRoom.EnterRoom();
+        }
+
 
     }
 }
