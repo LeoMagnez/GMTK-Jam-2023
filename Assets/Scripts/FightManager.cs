@@ -43,6 +43,7 @@ public class FightManager : MonoBehaviour
     private void Start()
     {
         paladin = Gamemanager.instance.paladin;
+        hasCombatEnded = false;
     }
     // Start is called before the first frame update
     public void StartCombat()
@@ -66,8 +67,9 @@ public class FightManager : MonoBehaviour
 
     public void InitCooldown()
     {
+
         RoomManager.instance.currentRoom.CreateTroups();
-        allies = RoomManager.instance.currentRoom.instantiated;
+        //allies = RoomManager.instance.currentRoom.instantiated;
 
         //for (int i = 0; i < allies.Count; i++)
         //{

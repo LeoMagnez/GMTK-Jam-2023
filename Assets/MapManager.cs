@@ -30,13 +30,20 @@ public class MapManager : MonoBehaviour
 
     void ChooseMap()
     {
+        Debug.Log(templates.Length);
         currentTemplate = Instantiate(templates[Random.Range(0,templates.Length)], transform);
         //animation de spawn de l'étage
         showRoom.SetActive(false);
+        //for(int i = 0; i <  templates.Length; i++)
+        //{
+        //    templates[i].SetActive(false);
+
+        //}
+        //currentTemplate.SetActive(true);
     }
     void Start()
     {
-        
+        ChooseMap();
     }
 
     public void SwitchView()

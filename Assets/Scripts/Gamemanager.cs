@@ -36,7 +36,11 @@ public class Gamemanager : MonoBehaviour
             case Phase.Fight:
                 //FightManager
                 //activer le paladin
+                paladin.SetActive(true);
                 FightManager.instance.gameObject.SetActive(true);
+
+                RoomManager.instance.currentRoom.EnterRoom();
+
                 MapManager.instance.gameObject.SetActive(false);
 
                 break;
@@ -56,12 +60,12 @@ public class Gamemanager : MonoBehaviour
         {
             instance = this;
         }
-        NextStep();
+        
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        NextStep();
     }
 
     // Update is called once per frame

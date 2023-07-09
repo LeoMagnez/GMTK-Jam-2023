@@ -18,6 +18,12 @@ public class Room : MonoBehaviour
 
     public roomType type;
 
+    public bool havetoPlay;
+
+    public List<GameObject> melees = new List<GameObject>();
+    public List<GameObject> ranges = new List<GameObject>();
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,16 +33,52 @@ public class Room : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        //Debug.Log(gameObject.name);
+        if (Input.GetKeyDown(KeyCode.Space ) || havetoPlay)
         {
-            FightManager.instance.hasCombatEnded = false;
+            havetoPlay = false;
+            //
             EnterRoom();
+
         }
     }
 
     public void EnterRoom()
     {
-        FightManager.instance.allies = cards;
+        FightManager.instance.hasCombatEnded = false;
+        
+        for (int i = 0; i < cards.Count; i++)
+        {
+            Debug.Log("ajoute carte :" + cards[i].name);
+            Debug.Log("avec portée :" + cards[i].GetComponent<Troops>().melee);
+            if (cards[i].GetComponent<Troops>().melee)
+            {
+                Debug.Log("ici");
+                melees.Add(cards[i]);
+            }
+            else
+            {
+                ranges.Add(cards[i]);
+            }
+        }
+
+        FightManager.instance.allies.Clear();
+
+        for (int i = 0; i < melees.Count; i++)
+        {
+            Debug.Log("ajoute à allies, mélée : " + melees[i].name);
+            FightManager.instance.allies.Add(melees[i]);
+        }
+            
+
+        for (int i = 0; i < ranges.Count; i++)
+        {
+            Debug.Log("ajoute à allies, range : " + ranges[i].name);
+            FightManager.instance.allies.Add(ranges[i]);
+        }
+            
+
+        //FightManager.instance.allies = cards;
         FightManager.instance.StartCombat();
     }
 
@@ -70,7 +112,7 @@ public class Room : MonoBehaviour
     {
         for (int i = 0; i < cards.Count; i++)
         {
-            GameObject temp = Instantiate(cards[i], transform);
+            GameObject temp = Instantiate(cards[i], Gamemanager.instance.paladin.transform);
             
             instantiated.Add(temp);
         }

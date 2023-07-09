@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1a84d9c26dc11a45936be2679f61088, type: 3}
   m_Name: Debug Card
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  generatedTroup: {fileID: 9184266519025673124, guid: fb6720fd66588f349aa20d46b6ae0a49,
+  generatedTroup: {fileID: 3329102256224839441, guid: 9d50891c822aa95418a4780085273265,
     type: 3}
   art: {fileID: 21300000, guid: 1661b4b0424015446b7f1c812d10a634, type: 3}
   tier: 2
