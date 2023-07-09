@@ -31,9 +31,13 @@ public class MapManager : MonoBehaviour
     void ChooseMap()
     {
         Debug.Log(templates.Length);
-        currentTemplate = Instantiate(templates[Random.Range(0,templates.Length)], transform);
+        GameObject temp = Instantiate(templates[Random.Range(0, templates.Length)]);
+        RoomManager.instance.ChangeCurrentRoom(temp.GetComponent<Template>().StartRoom);
+        currentTemplate = temp.transform.GetChild(0).gameObject;
+
         //animation de spawn de l'étage
         showRoom.SetActive(false);
+
         //for(int i = 0; i <  templates.Length; i++)
         //{
         //    templates[i].SetActive(false);
