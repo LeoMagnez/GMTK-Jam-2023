@@ -33,7 +33,7 @@ public class CardDisplay : MonoBehaviour
         {
             if(currentData.tokens.Length > i)
             {
-                tokens[i].sprite = currentData.tokens[i];
+                tokens[i].sprite = currentData.tokens[i].cardImage;
             }
             else
             {

@@ -13,7 +13,7 @@ public class CardData : ScriptableObject
     public int price;
     public CardData evolvedCard;
 
-    public Sprite[] tokens;
+    public CardDescriptor[] tokens;
 
 
 }
