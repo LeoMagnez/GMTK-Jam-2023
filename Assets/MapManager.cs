@@ -28,7 +28,7 @@ public class MapManager : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void ChooseMap()
+    public void ChooseMap()
     {
         Debug.Log(templates.Length);
         GameObject temp = Instantiate(templates[Random.Range(0, templates.Length)],new Vector3(0, 0f, -3f),Quaternion.identity);
