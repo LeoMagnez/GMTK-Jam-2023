@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -878,6 +878,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1380c1f476075c648a8592713c09360b, type: 2}
   - {fileID: 11400000, guid: a5628f186ba31ad4f9dfa8c9748dc1d4, type: 2}
   currentPhase: 2
+  Paladead: 0
 --- !u!4 &376145012
 Transform:
   m_ObjectHideFlags: 0
@@ -7673,7 +7674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1000
-  maxHealth: 0
+  maxHealth: 1000
   cooldown: 1
   baseCooldown: 1
   attack: 50
@@ -7692,6 +7693,7 @@ MonoBehaviour:
   slowEffect: 0
   slowEffectRatio: 0
   precisionDebuff: 0
+  backtoRoom: 0
 --- !u!1 &1721309766
 GameObject:
   m_ObjectHideFlags: 0
@@ -12836,9 +12838,11 @@ MonoBehaviour:
   validSave: 1
   templates:
   - {fileID: 9139111320400093924, guid: aad5440a377382d4394c3aac21b0a2bc, type: 3}
+  - {fileID: 9139111320400093924, guid: 60eed02bc0c602843bf71a5cf0d77129, type: 3}
   showRoom: {fileID: 4225662258463127492}
   currentRoomInEdit: {fileID: 0}
   currentTemplate: {fileID: 0}
+  startRoom: {fileID: 0}
 --- !u!4 &2003809499
 Transform:
   m_ObjectHideFlags: 0
