@@ -7,6 +7,7 @@ public class Gamemanager : MonoBehaviour
     public static Gamemanager instance;
 
     public GameObject paladin;
+    public CardData[] deck;
     enum Phase
     {
         Draw, Map, Fight
@@ -25,6 +26,10 @@ public class Gamemanager : MonoBehaviour
         switch(currentPhase) { 
             case Phase.Draw:
                 Debug.Log("PIOCHE");
+                
+                while (HandManager.instance.GetNumberOfCard() < 7) {
+                    HandManager.instance.DrawCard(deck[Random.Range(0,deck.Length)]);
+                }
                 NextStep();
                 break; 
             case Phase.Map: 
@@ -40,8 +45,9 @@ public class Gamemanager : MonoBehaviour
                 FightManager.instance.gameObject.SetActive(true);
 
                 RoomManager.instance.currentRoom.EnterRoom();
-
+                MapManager.instance.currentTemplate.SetActive(false);
                 MapManager.instance.gameObject.SetActive(false);
+
 
                 break;
         

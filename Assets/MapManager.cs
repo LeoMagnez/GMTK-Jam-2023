@@ -13,7 +13,7 @@ public class MapManager : MonoBehaviour
     [SerializeField] GameObject showRoom;
     [SerializeField] public Room currentRoomInEdit;
 
-    [SerializeField] GameObject currentTemplate;
+    [SerializeField] public GameObject currentTemplate;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -31,7 +31,7 @@ public class MapManager : MonoBehaviour
     void ChooseMap()
     {
         Debug.Log(templates.Length);
-        GameObject temp = Instantiate(templates[Random.Range(0, templates.Length)],new Vector3(0.13f, 0f, -3f),Quaternion.identity);
+        GameObject temp = Instantiate(templates[Random.Range(0, templates.Length)],new Vector3(0, 0f, -3f),Quaternion.identity);
         RoomManager.instance.ChangeCurrentRoom(temp.GetComponent<Template>().StartRoom);
         currentTemplate = temp.transform.GetChild(0).gameObject;
 
@@ -77,11 +77,13 @@ public class MapManager : MonoBehaviour
     IEnumerator IntoRoom()
     {
         ready = false;
-        currentTemplate.SetActive(false);
+        showRoom.SetActive(true);
+        //currentTemplate.SetActive(false);
+
         yield return new WaitForSeconds(0.5f);
         //animation de salle qui s'affiche pour poser les cartes
         currentRoomInEdit.cardHolder.SetActive(true);
-        //showRoom.SetActive(true);
+        
         HandManager.instance.gameObject.SetActive(true);
         HandManager.instance.Init();
         ready = true;
@@ -92,17 +94,29 @@ public class MapManager : MonoBehaviour
         //showRoom.SetActive(false);
 
         currentRoomInEdit.cardHolder.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
-        //animation de salle qui s'affiche pour poser les cartes
-        currentTemplate.SetActive(true);
         HandManager.instance.Close();
         HandManager.instance.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        //animation de salle qui s'affiche pour poser les cartes
+        showRoom.SetActive(false);
+
         ready = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (inMap)
+        {
+            currentTemplate.transform.localPosition = Vector3.Lerp(currentTemplate.transform.localPosition, new Vector3(0, 0, 0),Time.deltaTime*10);
+            showRoom.transform.localPosition = Vector3.Lerp(showRoom.transform.localPosition, new Vector3(0, 10, 0), Time.deltaTime*10);
+
+        }
+        else
+        {
+            currentTemplate.transform.localPosition = Vector3.Lerp(currentTemplate.transform.localPosition, new Vector3(0, -2, 0), Time.deltaTime*10);
+            showRoom.transform.localPosition = Vector3.Lerp(showRoom.transform.localPosition, new Vector3(0, 0.033f, 0), Time.deltaTime*10);
+
+        }
     }
 }
