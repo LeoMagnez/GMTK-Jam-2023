@@ -604,7 +604,8 @@ MonoBehaviour:
   - {fileID: 2370221432500390338}
   - {fileID: 515592978775288309}
   instantiated: []
-  cardHolder: {fileID: 6770694855608133150}
+  cardHolder: {fileID: 6770694856337354997}
+  environnement: {fileID: 7918500367185847445}
   type: 0
   havetoPlay: 0
   melees: []
@@ -1511,7 +1512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mana: 6
   connectedRooms:
-  - {fileID: 0}
+  - {fileID: 4956480967864119447}
   cards: []
   slots:
   - {fileID: 1391078544535465271}
@@ -1523,7 +1524,8 @@ MonoBehaviour:
   - {fileID: 7394978613189631399}
   - {fileID: 5384816853022518614}
   instantiated: []
-  cardHolder: {fileID: 6770694855608133150}
+  cardHolder: {fileID: 6770694856262445798}
+  environnement: {fileID: 8518662462990099434}
   type: 0
   havetoPlay: 0
   melees: []
@@ -2566,7 +2568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93ed9c0ba2b73e4dadd95ad3c88c79e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectedRoom: {fileID: 0}
+  projectedRoom: {fileID: 8650313825576256812}
 --- !u!1 &6770694855608133150
 GameObject:
   m_ObjectHideFlags: 0
@@ -2646,7 +2648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mana: 6
   connectedRooms:
-  - {fileID: 0}
+  - {fileID: 8650313825576256812}
   cards: []
   slots:
   - {fileID: 1923721057795758738}
@@ -2659,6 +2661,7 @@ MonoBehaviour:
   - {fileID: 1831929304272815489}
   instantiated: []
   cardHolder: {fileID: 6770694855608133150}
+  environnement: {fileID: 4658365252569643889}
   type: 0
   havetoPlay: 0
   melees: []
@@ -2946,7 +2949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93ed9c0ba2b73e4dadd95ad3c88c79e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectedRoom: {fileID: 0}
+  projectedRoom: {fileID: 4956480967864119447}
 --- !u!1 &6770694856697769181
 GameObject:
   m_ObjectHideFlags: 0
@@ -2962,7 +2965,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6770694856697769182
 Transform:
   m_ObjectHideFlags: 0

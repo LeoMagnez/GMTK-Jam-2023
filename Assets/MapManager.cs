@@ -31,12 +31,12 @@ public class MapManager : MonoBehaviour
     void ChooseMap()
     {
         Debug.Log(templates.Length);
-        GameObject temp = Instantiate(templates[Random.Range(0, templates.Length)]);
+        GameObject temp = Instantiate(templates[Random.Range(0, templates.Length)],new Vector3(0.13f, 0f, -3f),Quaternion.identity);
         RoomManager.instance.ChangeCurrentRoom(temp.GetComponent<Template>().StartRoom);
         currentTemplate = temp.transform.GetChild(0).gameObject;
 
         //animation de spawn de l'étage
-        showRoom.SetActive(false);
+        //showRoom.SetActive(false);
 
         //for(int i = 0; i <  templates.Length; i++)
         //{
@@ -81,7 +81,7 @@ public class MapManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         //animation de salle qui s'affiche pour poser les cartes
         currentRoomInEdit.cardHolder.SetActive(true);
-        showRoom.SetActive(true);
+        //showRoom.SetActive(true);
         HandManager.instance.gameObject.SetActive(true);
         HandManager.instance.Init();
         ready = true;
@@ -89,7 +89,7 @@ public class MapManager : MonoBehaviour
     IEnumerator ExitRoom()
     {
         ready = false;
-        showRoom.SetActive(false);
+        //showRoom.SetActive(false);
 
         currentRoomInEdit.cardHolder.SetActive(false);
         yield return new WaitForSeconds(0.5f);
