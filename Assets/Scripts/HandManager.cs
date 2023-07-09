@@ -56,11 +56,11 @@ public class HandManager : MonoBehaviour
                 {
                     if (i == selectedCard)
                     {
-                        cardsDisplay[i].GetComponent<Renderer>().material.color = Color.white;
+                        //cardsDisplay[i].GetComponent<Renderer>().material.color = Color.white;
                     }
                     else
                     {
-                        cardsDisplay[i].GetComponent<Renderer>().material.color = Color.gray;
+                        //cardsDisplay[i].GetComponent<Renderer>().material.color = Color.light;
                     }
                     if (i >= cardCount)
                     {
@@ -80,7 +80,7 @@ public class HandManager : MonoBehaviour
         }
         else
         {
-            Vector3 slerpOffset = Camera.main.transform.position - Camera.main.transform.forward * 1f;
+            Vector3 slerpOffset = Camera.main.transform.position - Camera.main.transform.forward * 0.8f;
             float maxSpace = cardsDisplay[0].transform.localScale.x * 10f * 6f / 2;
             float minSpace = cardsDisplay[0].transform.localScale.x * 10f * 2f / 2;
             float currentSpace = Mathf.Lerp(minSpace, maxSpace, cardSpacingCurve.Evaluate(cardCount / 15f));
@@ -239,7 +239,7 @@ public class HandManager : MonoBehaviour
             {
                 if (focus)
                 {
-                    targetPos = Vector3.Slerp(anchors[0].position + new Vector3(0, 0.1f, -0.1f) - slerpOffset, anchors[1].position + new Vector3(0, 0.1f, -0.1f) - slerpOffset, (i + 1) / (cardCount + 1f)) + slerpOffset;
+                    targetPos = Vector3.Slerp(anchors[0].position + new Vector3(0, 0.1f, -0.15f) - slerpOffset, anchors[1].position + new Vector3(0, 0.1f, -0.15f) - slerpOffset, (i + 1) / (cardCount + 1f)) + slerpOffset;
                 }
                 else
                 {

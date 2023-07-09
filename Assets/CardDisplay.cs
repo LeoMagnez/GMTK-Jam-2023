@@ -34,9 +34,12 @@ public class CardDisplay : MonoBehaviour
             if(currentData.tokens.Length > i)
             {
                 tokens[i].sprite = currentData.tokens[i].cardImage;
+                tokens[i].gameObject.SetActive(true);
+
             }
             else
             {
+                tokens[i].gameObject.SetActive(false);
                 tokens[i].sprite = null;
             }
 
@@ -44,6 +47,8 @@ public class CardDisplay : MonoBehaviour
         tier.sprite = tierSprites[currentData.tier];
         rarity.sprite = raritySprites[currentData.rarity];
         price.sprite = priceSprites[currentData.price-1];
+        artwork.sprite = currentData.art;
+
         
     }
     private void Update()
