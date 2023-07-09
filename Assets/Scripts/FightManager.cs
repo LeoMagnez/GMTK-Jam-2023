@@ -37,6 +37,7 @@ public class FightManager : MonoBehaviour
         {
             instance = this;
         }
+        gameObject.SetActive(false);
     }
 
     private void Start()
@@ -65,7 +66,8 @@ public class FightManager : MonoBehaviour
 
     public void InitCooldown()
     {
-        allies = RoomManager.instance.currentRoom.cards;
+        RoomManager.instance.currentRoom.CreateTroups();
+        allies = RoomManager.instance.currentRoom.instantiated;
 
         //for (int i = 0; i < allies.Count; i++)
         //{
