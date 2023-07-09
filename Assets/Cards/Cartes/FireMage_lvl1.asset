@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1a84d9c26dc11a45936be2679f61088, type: 3}
   m_Name: FireMage_lvl1
   m_EditorClassIdentifier: 
-  generatedTroup: {fileID: 0}
+  generatedTroup: {fileID: 2036659156057360403, guid: 9284dd0c02999ab4182ef25d64ea1e70,
+    type: 3}
   art: {fileID: 0}
   tier: 0
-  rarity: 0
-  price: 0
+  rarity: 2
+  price: 2
   evolvedCard: {fileID: 0}
   tokens: []

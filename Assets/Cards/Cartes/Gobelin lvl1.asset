@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1a84d9c26dc11a45936be2679f61088, type: 3}
   m_Name: Gobelin lvl1
   m_EditorClassIdentifier: 
-  generatedTroup: {fileID: 0}
+  generatedTroup: {fileID: 1208271292009754805, guid: a7b9687ed77bb6a4695c1b965cb0ff82,
+    type: 3}
   art: {fileID: 0}
   tier: 0
   rarity: 0
-  price: 0
+  price: 1
   evolvedCard: {fileID: 0}
   tokens: []

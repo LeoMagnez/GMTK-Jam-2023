@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1a84d9c26dc11a45936be2679f61088, type: 3}
   m_Name: ElemEau
   m_EditorClassIdentifier: 
-  generatedTroup: {fileID: 0}
+  generatedTroup: {fileID: 6243271459957171815, guid: 6a1a5e3782c85e44abd60c989b063dbe,
+    type: 3}
   art: {fileID: 0}
   tier: 0
-  rarity: 0
-  price: 0
+  rarity: 2
+  price: 3
   evolvedCard: {fileID: 0}
   tokens: []

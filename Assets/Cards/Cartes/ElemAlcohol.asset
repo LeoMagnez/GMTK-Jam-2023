@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1a84d9c26dc11a45936be2679f61088, type: 3}
   m_Name: ElemAlcohol
   m_EditorClassIdentifier: 
-  generatedTroup: {fileID: 0}
+  generatedTroup: {fileID: 4858823850752103461, guid: d64bcdc48d2d89e49a920822040ddce6,
+    type: 3}
   art: {fileID: 0}
   tier: 0
-  rarity: 0
-  price: 0
+  rarity: 1
+  price: 2
   evolvedCard: {fileID: 0}
   tokens: []
