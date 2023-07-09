@@ -123,11 +123,14 @@ public class FightManager : MonoBehaviour
         //    {
         //        Destroy(troop.gameObject);
         //    }
-            
+
         //}
-
-
-        allies.Clear();
+        Debug.Log(allies);
+        if (allies != null)
+        {
+            allies.Clear();
+        }
+            
         StopAllCoroutines();
         paladin.GetComponent<Paladin>().attackIndex = 0;
         attacking = false;

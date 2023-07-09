@@ -75,7 +75,11 @@ public class Room : MonoBehaviour
 
     public void ExitRoom()
     {
-        if(connectedRooms.Length > 1)
+        if (connectedRooms[0] == null)
+        {
+            nettoyage();
+        }
+        else if(connectedRooms.Length > 1)
         {
             //choisir la prochaine salle
 
@@ -175,8 +179,11 @@ public class Room : MonoBehaviour
                 ranges.Add(cards[i]);
             }
         }
-
-        FightManager.instance.allies.Clear();
+        if(FightManager.instance.allies != null)
+        {
+            FightManager.instance.allies.Clear();
+        }
+        
 
         for (int i = 0; i < melees.Count; i++)
         {
@@ -194,5 +201,19 @@ public class Room : MonoBehaviour
 
         FightManager.instance.allies = instantiated;
         FightManager.instance.StartCombat();
+    }
+
+    public void nettoyage()
+    {
+        //MapManager.instance.currentTemplate = null;
+
+        MapManager.instance.ChooseMap();
+
+        FightManager.instance.allies = null;
+
+        this.gameObject.SetActive(false);
+        environnement.SetActive(false);
+
+        Gamemanager.instance.NextStep();
     }
 }
