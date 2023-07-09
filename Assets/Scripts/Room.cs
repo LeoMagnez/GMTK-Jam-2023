@@ -76,6 +76,62 @@ public class Room : MonoBehaviour
         if(connectedRooms.Length > 1)
         {
             //choisir la prochaine salle
+
+
+
+            float densite1 = 6f - connectedRooms[0].mana ;
+            float densite2 = 6f - connectedRooms[1].mana ;
+
+            int direction;
+            //float ratioHealth = Gamemanager.instance.paladin.GetComponent<Paladin>().health / Gamemanager.instance.paladin.GetComponent<Paladin>().maxHealth;
+
+            if(Gamemanager.instance.paladin.GetComponent<Paladin>().health > Gamemanager.instance.paladin.GetComponent<Paladin>().maxHealth/2f)
+            {
+                if(densite1 > densite2)
+                {
+                    direction = 0;
+                    //RoomManager.instance.ChangeCurrentRoom(connectedRooms[0]);
+                }
+                else if(densite1 < densite2)
+                {
+                    direction = 1;
+                    //RoomManager.instance.ChangeCurrentRoom(connectedRooms[1]);
+                }
+                else
+                {
+                    direction = Random.Range(0, 2);
+                    //RoomManager.instance.ChangeCurrentRoom(connectedRooms[Random.Range(0,2)]);
+                }
+            }
+            else
+            {
+                if (densite1 > densite2)
+                {
+                    direction = 1;
+                    //RoomManager.instance.ChangeCurrentRoom(connectedRooms[1]);
+                }
+                else if (densite1 < densite2)
+                {
+                    direction = 0;
+                    //RoomManager.instance.ChangeCurrentRoom(connectedRooms[0]);
+                }
+                else
+                {
+                    direction = Random.Range(0, 2);
+                    //RoomManager.instance.ChangeCurrentRoom(connectedRooms[Random.Range(0, 2)]);
+                }
+            }
+
+            RoomManager.instance.ChangeCurrentRoom(connectedRooms[direction]);
+            connectedRooms[direction].gameObject.SetActive(true);
+
+
+
+            this.gameObject.SetActive(false);
+            environnement.SetActive(false);
+
+
+            
         }
         else
         {
@@ -84,6 +140,8 @@ public class Room : MonoBehaviour
             connectedRooms[0].gameObject.SetActive(true);
             this.gameObject.SetActive(false);
             environnement.SetActive(false);
+
+            
         }
     }
     public void CreateTroups(List<GameObject> list)
