@@ -11,6 +11,7 @@ public class MapManager : MonoBehaviour
     [SerializeField] bool validSave = true;
     [SerializeField] GameObject[] templates;
     [SerializeField] GameObject showRoom;
+    [SerializeField] GameObject readybutton;
     [SerializeField] public Room currentRoomInEdit;
 
     [SerializeField] public GameObject currentTemplate;
@@ -81,6 +82,7 @@ public class MapManager : MonoBehaviour
     IEnumerator IntoRoom()
     {
         ready = false;
+        readybutton.SetActive(false);
         showRoom.SetActive(true);
         //currentTemplate.SetActive(false);
 
@@ -103,6 +105,7 @@ public class MapManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         //animation de salle qui s'affiche pour poser les cartes
         showRoom.SetActive(false);
+        readybutton.SetActive(true);
 
         ready = true;
     }

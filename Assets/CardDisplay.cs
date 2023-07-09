@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class CardDisplay : MonoBehaviour
 {
-    [SerializeField] CardData currentData;
+    [SerializeField] public CardData currentData;
     [SerializeField] Sprite[] raritySprites;
     [SerializeField] Sprite[] tierSprites;
     [SerializeField] Sprite[] priceSprites;

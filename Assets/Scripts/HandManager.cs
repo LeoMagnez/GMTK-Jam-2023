@@ -1,8 +1,8 @@
+
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
-using static UnityEngine.GraphicsBuffer;
 
 public class HandManager : MonoBehaviour
 {
@@ -22,7 +22,8 @@ public class HandManager : MonoBehaviour
     public Vector3 offset;
     public static HandManager instance;
     bool inFocus;
-
+    [SerializeField] TextMeshProUGUI render;
+    float timer;
 
     // Start is called before the first frame update
     private void Awake()
@@ -105,6 +106,25 @@ public class HandManager : MonoBehaviour
 
         }
         UpdateHand();
+        if(timer > 0)
+        {
+            timer -= Time.deltaTime;
+
+        }if(timer < 0)
+        {
+            timer = 0;
+            render.SetText("");
+        }
+    }
+
+    public void ShowToken(int index)
+    {
+        if(cardInSelection)
+        {
+            timer = 1f;
+            render.SetText(cardsInHand[selectedCard].tokens[index].description);
+        }
+
     }
 
     public void PlaceButton()
