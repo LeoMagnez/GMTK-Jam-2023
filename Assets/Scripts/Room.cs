@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public class Room : MonoBehaviour
@@ -12,6 +13,7 @@ public class Room : MonoBehaviour
     public List<GameObject> instantiated = new List<GameObject>();
     [SerializeField]public GameObject cardHolder;
     [SerializeField] GameObject environnement;
+    [SerializeField] ParticleSystem dust;
 
     public enum roomType
     {
@@ -49,42 +51,12 @@ public class Room : MonoBehaviour
     public void EnterRoom()
     {
 
-        List<GameObject> sorted = new List<GameObject>();
-        FightManager.instance.hasCombatEnded = false;
+
+        dust.Play();
         environnement.SetActive(true);
-        for (int i = 0; i < cards.Count; i++)
-        {
-            Debug.Log("ajoute carte :" + cards[i].name);
-            Debug.Log("avec portée :" + cards[i].GetComponent<Troops>().melee);
-            if (cards[i].GetComponent<Troops>().melee)
-            {
-                Debug.Log("ici");
-                melees.Add(cards[i]);
-            }
-            else
-            {
-                ranges.Add(cards[i]);
-            }
-        }
 
-        FightManager.instance.allies.Clear();
+        StartCoroutine(WaitBeforeFight());
 
-        for (int i = 0; i < melees.Count; i++)
-        {
-            Debug.Log("ajoute à allies, mélée : " + melees[i].name);
-            sorted.Add(melees[i]);
-        }
-            
-
-        for (int i = 0; i < ranges.Count; i++)
-        {
-            Debug.Log("ajoute à allies, range : " + ranges[i].name);
-            sorted.Add(ranges[i]);
-        }
-        CreateTroups(sorted);
-
-        FightManager.instance.allies = instantiated;
-        FightManager.instance.StartCombat();
     }
 
     public void AddToRoom(CardData entity)
@@ -122,5 +94,45 @@ public class Room : MonoBehaviour
             
             instantiated.Add(temp);
         }
+    }
+
+    public IEnumerator WaitBeforeFight()
+    {
+        yield return new WaitForSeconds(3f);
+        List<GameObject> sorted = new List<GameObject>();
+        FightManager.instance.hasCombatEnded = false;
+        for (int i = 0; i < cards.Count; i++)
+        {
+            Debug.Log("ajoute carte :" + cards[i].name);
+            Debug.Log("avec portée :" + cards[i].GetComponent<Troops>().melee);
+            if (cards[i].GetComponent<Troops>().melee)
+            {
+                Debug.Log("ici");
+                melees.Add(cards[i]);
+            }
+            else
+            {
+                ranges.Add(cards[i]);
+            }
+        }
+
+        FightManager.instance.allies.Clear();
+
+        for (int i = 0; i < melees.Count; i++)
+        {
+            Debug.Log("ajoute à allies, mélée : " + melees[i].name);
+            sorted.Add(melees[i]);
+        }
+
+
+        for (int i = 0; i < ranges.Count; i++)
+        {
+            Debug.Log("ajoute à allies, range : " + ranges[i].name);
+            sorted.Add(ranges[i]);
+        }
+        CreateTroups(sorted);
+
+        FightManager.instance.allies = instantiated;
+        FightManager.instance.StartCombat();
     }
 }
