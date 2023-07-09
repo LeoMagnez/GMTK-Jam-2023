@@ -13,6 +13,8 @@ public class Troops : MonoBehaviour
     public float defense = 10f;
     public bool melee;
 
+    public float statusStr;
+
     public int attackIndex = 0;
 
     public ParticleSystem attackParticle;
@@ -21,7 +23,6 @@ public class Troops : MonoBehaviour
     public enum troopType
     {
         Gobelin,
-        Archer,
         Troll,
         Mortier,
         ElementaireFeu,
@@ -38,12 +39,12 @@ public class Troops : MonoBehaviour
 
     public bool isAlive;
 
-    public TextMeshPro HPtext;
+    //public TextMeshPro HPtext;
 
     // Start is called before the first frame update
     void Start()
     {
-        HPtext.SetText(health.ToString());
+        //HPtext.SetText(health.ToString());
         isAlive = true;
         health = baseHealth;
     }
@@ -141,7 +142,7 @@ public class Troops : MonoBehaviour
                 isAlive = false;
             }
 
-            HPtext.SetText(health.ToString());
+            //HPtext.SetText(health.ToString());
         }
 
     }
@@ -172,11 +173,20 @@ public class Troops : MonoBehaviour
                 AttackEveryone();
                 break;
 
+            case troopType.Troll:
+                MonoTarget();
+                break;
+
             case troopType.ElementaireFeu:
                 MonoTarget();
                 if (InflictStatus())
                 {
-                    Gamemanager.instance.paladin.GetComponent<Paladin>().breakArmor = 2;
+                    if(Gamemanager.instance.paladin.GetComponent<Paladin>().breakArmorRatio >= statusStr)
+                    {
+                        Gamemanager.instance.paladin.GetComponent<Paladin>().breakArmor = 2;
+                        Gamemanager.instance.paladin.GetComponent<Paladin>().breakArmorRatio = statusStr;
+                    }
+                    
                 }
                 break;
 
@@ -184,7 +194,12 @@ public class Troops : MonoBehaviour
                 MonoTarget();
                 if (InflictStatus())
                 {
-                    Gamemanager.instance.paladin.GetComponent<Paladin>().slowEffect = 2;
+                    if(Gamemanager.instance.paladin.GetComponent<Paladin>().slowEffectRatio <= statusStr)
+                    {
+                        Gamemanager.instance.paladin.GetComponent<Paladin>().slowEffect = 2;
+                        Gamemanager.instance.paladin.GetComponent<Paladin>().slowEffectRatio = statusStr;
+                    }
+                    
                 }
                 break;
 
@@ -250,6 +265,6 @@ public class Troops : MonoBehaviour
         {
             health = baseHealth;
         }
-        HPtext.SetText(health.ToString());
+        //HPtext.SetText(health.ToString());
     }
 }

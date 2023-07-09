@@ -25,7 +25,11 @@ public class Paladin : MonoBehaviour
     public TextMeshPro HPtext;
 
     public int breakArmor;
+    [HideInInspector]
+    public float breakArmorRatio;
     public int slowEffect;
+    [HideInInspector]
+    public float slowEffectRatio;
     public int precisionDebuff;
 
     
@@ -42,6 +46,9 @@ public class Paladin : MonoBehaviour
         defense = baseDefense;
         cooldown = baseCooldown;
         attack = baseAttack;
+
+        breakArmorRatio = 1f;
+        slowEffectRatio = 1f;
     }
 
     // Update is called once per frame
@@ -192,7 +199,7 @@ public class Paladin : MonoBehaviour
     {
         if (breakArmor > 0)
         {
-            defense = baseDefense * 0.75f;
+            defense = baseDefense * breakArmorRatio;
         }
         else
         {
@@ -201,7 +208,7 @@ public class Paladin : MonoBehaviour
 
         if (slowEffect > 0)
         {
-            cooldown = baseCooldown * 1.25f;
+            cooldown = baseCooldown * slowEffectRatio;
 
         }
         else
