@@ -48,9 +48,13 @@ public class CardDisplay : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+    }
+    void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(0))
         {
             PickUp();
+            // Whatever you want it to do.
         }
     }
     public void PickUp()
@@ -58,7 +62,7 @@ public class CardDisplay : MonoBehaviour
         if(onTable && !HandManager.instance.cardInSelection)
         {
             HandManager.instance.DrawCard(currentData);
-            HandManager.instance.currentRoomEdit.RemoveFromRoom(currentData);
+            MapManager.instance.currentRoomInEdit.RemoveFromRoom(currentData);
             Destroy(gameObject);
         }
 

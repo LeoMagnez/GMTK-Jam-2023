@@ -19,6 +19,7 @@ public class RoomManager : MonoBehaviour
         {
             instance = this;
         }
+        gameObject.SetActive(true);
     }
     // Start is called before the first frame update
     void Start()
@@ -36,5 +37,6 @@ public class RoomManager : MonoBehaviour
     {
         Debug.Log(newRoom);
         currentRoom = newRoom;
+        
     }
 }
