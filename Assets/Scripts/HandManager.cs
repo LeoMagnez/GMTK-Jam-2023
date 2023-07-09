@@ -9,6 +9,8 @@ public class HandManager : MonoBehaviour
     public List<GameObject> cardsDisplay = new List<GameObject>();
     public List<CardData> cardsInHand = new List<CardData>();
     public GameObject returnToDeck;
+    public GameObject returnToMap;
+    public GameObject poseCard;
     public AnimationCurve cardSpacingCurve;
     public int cardCount;
     bool onHandHud = false;
@@ -19,7 +21,8 @@ public class HandManager : MonoBehaviour
     public Transform[] anchors;
     public Vector3 offset;
     public static HandManager instance;
-    public Room currentRoomEdit;
+    bool inFocus;
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -33,40 +36,47 @@ public class HandManager : MonoBehaviour
         {
             instance = this;
         }
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        inFocus = (Input.mousePosition.y < Screen.height * 0.4f);
+
         if (!cardInSelection)
         {
             float minX = Camera.main.WorldToScreenPoint(anchors[0].position).x;
             float maxX = Camera.main.WorldToScreenPoint(anchors[1].position).x;
+     
+                selectedRatio = (Input.mousePosition.x - minX) / (maxX - minX);
+                selectedCard = Mathf.FloorToInt(cardCount * selectedRatio);
+                selectedCard = Mathf.Clamp(selectedCard, 0, cardCount - 1);
+                for (int i = 0; i < cardsDisplay.Count; i++)
+                {
+                    if (i == selectedCard)
+                    {
+                        cardsDisplay[i].GetComponent<Renderer>().material.color = Color.white;
+                    }
+                    else
+                    {
+                        cardsDisplay[i].GetComponent<Renderer>().material.color = Color.gray;
+                    }
+                    if (i >= cardCount)
+                    {
+                        cardsDisplay[i].SetActive(false);
 
-            selectedRatio = (Input.mousePosition.x - minX) / (maxX - minX);
-            selectedCard = Mathf.FloorToInt(cardCount * selectedRatio);
-            selectedCard = Mathf.Clamp(selectedCard, 0, cardCount - 1);
-            for (int i = 0; i < cardsDisplay.Count; i++)
-            {
-                if (i == selectedCard)
-                {
-                    cardsDisplay[i].GetComponent<Renderer>().material.color = Color.white;
+                    }
+                    else
+                    {
+                        cardsDisplay[i].SetActive(true);
+                    }
                 }
-                else
-                {
-                    cardsDisplay[i].GetComponent<Renderer>().material.color = Color.gray;
-                }
-                if (i >= cardCount)
-                {
-                    cardsDisplay[i].SetActive(false);
 
-                }
-                else
-                {
-                    cardsDisplay[i].SetActive(true);
-                }
-            }
-            UpdateCardPlacement();
+            UpdateCardPlacement(inFocus);
+
+            
+            
         }
         else
         {
@@ -88,46 +98,75 @@ public class HandManager : MonoBehaviour
             }
         }
         
-        if (Input.GetMouseButtonDown(0) && !cardInSelection && cardCount != 0)
+        if (Input.GetMouseButtonDown(0) && !cardInSelection && cardCount != 0 && inFocus)
         {
             cardInSelection = true;
             StartCoroutine(FocusOnCard(cardsDisplay[selectedCard]));
 
         }
-        if (cardInSelection && Input.GetKeyDown(KeyCode.W))
+        UpdateHand();
+    }
+
+    public void PlaceButton()
+    {
+        if (cardInSelection)
         {
             AddCardToRoom();
         }
-        UpdateHand();
+    }
+
+    public void Init()
+    {
+        returnToMap.SetActive(true);
+        foreach (GameObject item in cardsDisplay)
+        {
+            item.transform.position = Camera.main.transform.position - new Vector3(0, 3, 1);
+        }
+    }
+    public void Close()
+    {
+        returnToMap.SetActive(false);
+
     }
 
     public void AddCardToRoom()
     {
-        currentRoomEdit.AddToRoom(cardsInHand[selectedCard]);
+        MapManager.instance.currentRoomInEdit.AddToRoom(cardsInHand[selectedCard]);
         StartCoroutine(PoseCard(cardsDisplay[selectedCard]));
     }
     IEnumerator PoseCard(GameObject card)
     {
         bool inAnim = true;
+        returnToDeck.SetActive(false);
+        poseCard.SetActive(false);
+        Quaternion randRot = Quaternion.Euler(0,Random.Range(0,360),0);
+        Vector3 randOffset = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
         while (inAnim)
         {
-            if (Vector3.Distance(card.transform.position, anchors[3].position) < 0.01f)
+            if (Vector3.Distance(card.transform.position, anchors[3].position + randOffset) < 0.01f && Quaternion.Angle(card.transform.rotation, randRot)<3f)
             {
                 inAnim = false;
             }
-            card.transform.position = Vector3.Lerp(card.transform.position, anchors[3].position, Time.deltaTime * 10f);
+            card.transform.position = Vector3.Lerp(card.transform.position, anchors[3].position + randOffset, Time.deltaTime * 10f);
+            card.transform.rotation = Quaternion.Lerp(card.transform.rotation, randRot,Time.deltaTime * 10f);
+            Debug.Log(Quaternion.Angle(card.transform.rotation, randRot) < 3f);
             yield return null;
 
 
 
         }
-        GameObject ghost = Instantiate(card, card.transform.position, Quaternion.identity);
+        GameObject ghost = Instantiate(card, card.transform.position, card.transform.rotation);
+        ghost.transform.SetParent(MapManager.instance.currentRoomInEdit.cardHolder.transform,true);
         ghost.GetComponent<CardDisplay>().onTable = true;
+        card.transform.position = Camera.main.transform.position - new Vector3(0, 3, 1);
+        card.transform.localRotation = Quaternion.Euler(-90f, 0, 0);
         cardsDisplay.RemoveAt(selectedCard);
         cardsInHand.RemoveAt(selectedCard);
         cardsDisplay.Add(card);
         cardInSelection = false;
-        returnToDeck.SetActive(false);
+
+        returnToMap.SetActive(true);
+        
     }
 
     public void DrawCard(CardData card)
@@ -147,6 +186,7 @@ public class HandManager : MonoBehaviour
 
     IEnumerator FocusOnCard(GameObject card)
     {
+        returnToMap.SetActive(false);
         bool inAnim = true;
         while(inAnim)
         {
@@ -159,19 +199,24 @@ public class HandManager : MonoBehaviour
 
 
         }
+        poseCard.SetActive(true);
+        //anim de bouton
         returnToDeck.SetActive(true);
     }
     public void UnfocusCard()
     {
+        
         if (cardInSelection)
         {
+            returnToMap.SetActive(true);
             returnToDeck.SetActive(false);
             cardInSelection = false;
+            poseCard.SetActive(false);
         }
-
+        
     }
 
-    private void UpdateCardPlacement()
+    private void UpdateCardPlacement(bool focus)
     {
         cardCount = Mathf.Clamp(cardCount, 0, 8);
         Vector3 slerpOffset = Camera.main.transform.position - Camera.main.transform.forward * 1f;
@@ -189,7 +234,14 @@ public class HandManager : MonoBehaviour
             }
             else
             {
-                 targetPos = Vector3.Slerp(anchors[0].position + new Vector3(0, 0.1f, -0.1f)- slerpOffset, anchors[1].position + new Vector3(0, 0.1f, -0.1f)- slerpOffset, (i + 1) / (cardCount + 1f))+ slerpOffset;
+                if (focus)
+                {
+                    targetPos = Vector3.Slerp(anchors[0].position + new Vector3(0, 0.1f, -0.1f) - slerpOffset, anchors[1].position + new Vector3(0, 0.1f, -0.1f) - slerpOffset, (i + 1) / (cardCount + 1f)) + slerpOffset;
+                }
+                else
+                {
+                    targetPos = Vector3.Slerp(anchors[0].position - slerpOffset, anchors[1].position - slerpOffset, (i + 1) / (cardCount + 1f)) + slerpOffset;
+                }
             }
             cardsDisplay[i].transform.position = Vector3.Lerp(cardsDisplay[i].transform.position, targetPos, Time.deltaTime * 10f);
         }

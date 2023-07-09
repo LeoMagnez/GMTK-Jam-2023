@@ -8,7 +8,8 @@ public class Room : MonoBehaviour
     public Room[] connectedRooms;
 
     public List<GameObject> cards = new List<GameObject>();
-
+    public List<GameObject> instantiated = new List<GameObject>();
+    [SerializeField]public GameObject cardHolder;
     public enum roomType
     {
         Normal,
@@ -63,6 +64,15 @@ public class Room : MonoBehaviour
             RoomManager.instance.ChangeCurrentRoom(connectedRooms[0]);
             connectedRooms[0].gameObject.SetActive(true);
             this.gameObject.SetActive(false);
+        }
+    }
+    public void CreateTroups()
+    {
+        for (int i = 0; i < cards.Count; i++)
+        {
+            GameObject temp = Instantiate(cards[i], transform);
+            
+            instantiated.Add(temp);
         }
     }
 }
